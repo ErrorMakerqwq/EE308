@@ -4,6 +4,9 @@
 @Author  ：ErrorMaker
 @Date    ：2021/9/21 22:21 
 '''
+import cProfile
+
+
 
 #ui
 def ui():
@@ -12,14 +15,15 @@ def ui():
     level = input('请输入运行等级：')
     return path,level
 #选择器
+
 def chooseingFuction(path,level):
     #level1
     if(level=='1'):
         countingKwords(path)
     #level2
     elif(level=='2'):
-        keywordsList = countingKwords(path)
-        couterSClist = countingswtichStructure(keywordsList)
+        keywrdsList = countingKwords(path)
+        couterSClist = countingswtichStructure(keywrdsList)
         print('case num: ',end='')
         for i in range(0, len(couterSClist)):
             print(couterSClist[i]," ",end='')
@@ -29,38 +33,44 @@ def chooseingFuction(path,level):
 
 
 
+
 # Counting fuction
 def countingKwords(path):
-    countKeywords = 0
-    keywordsList = list()
+    countkeywrds = 0
+    keywrdsList = list()
     with open(path) as fileStream:
+        #分割字符串
         strarr = fileStream.read().split()
+        #遍历str
         for str in strarr:
-            for kw in keywords:
+            #遍历关键字表
+            for kw in keywrds:
+                #如果有关键字countkeywrds + 1
                 if (str.__contains__(kw)):
-                    countKeywords = countKeywords + 1
-                    keywordsList.append(kw)
+                    countkeywrds = countkeywrds + 1
+                    #添加item
+                    keywrdsList.append(kw)
                     break
-    print('total num:', countKeywords)
-    return  keywordsList
+    print('total num:', countkeywrds)
+    return  keywrdsList
 
 # Counting swtich structure
-def countingswtichStructure(keywordsList):
+def countingswtichStructure(keywrdsList):
     counterSwitch = 0
     couterSClist = []
     i = 0;
     # find "swtich"
-    for i in range(len(keywordsList)):
+    for i in range(len(keywrdsList)):
         counter2 = 0
-        if (keywordsList[i] == "switch"):
+        if (keywrdsList[i] == "switch"):
 
             counterSwitch = counterSwitch + 1
 
-            for j in range(i + 1, len(keywordsList)):
-                if (keywordsList[j] == "case"):
+            for j in range(i + 1, len(keywrdsList)):
+                if (keywrdsList[j] == "case"):
                     counter2 = counter2 + 1
 
-                elif (keywordsList[j] == 'switch'):
+                elif (keywrdsList[j] == 'switch'):
 
                     break
 
@@ -69,16 +79,17 @@ def countingswtichStructure(keywordsList):
     return couterSClist
 
 # Counting if-else and if-elseif-else structure
-#def countingEifStructure(keywordsList):
+#def countingEifStructure(keywrdsList):
+ #关键字表
+keywrds = ["auto", "break", "case", "char", "const", "continue", "default"
+        , "double", "do", "else", "enum", "extern", "float", "for", "goto", "if"
+        , "int", "long", "register", "return", "short", "signed", "sizeof", "static"
+        , "struct", "switch", "typedef", "union", "unsigned", "void", "volatile", "while"]
 
 if __name__ == '__main__':
 
     path,level=ui()
-    #关键字表
-    keywords = ["auto", "break", "case", "char", "const", "continue", "default"
-        , "double", "do", "else", "enum", "extern", "float", "for", "goto", "if"
-        , "int", "long", "register", "return", "short", "signed", "sizeof", "static"
-        , "struct", "switch", "typedef", "union", "unsigned", "void", "volatile", "while"]
+
 
     chooseingFuction(path, level)
 
