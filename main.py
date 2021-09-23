@@ -9,12 +9,11 @@
 
 #ui
 def ui():
-    # 输入用户数据
+    # input data
     path = input('请输入文件路径（默认路径为File.c)：')
     level = input('请输入运行等级：')
     return path,level
-#选择器
-
+#choosing
 def chooseingFuction(path,level):
     #level1
     if(level=='1'):
@@ -27,7 +26,7 @@ def chooseingFuction(path,level):
         for i in range(0, len(couterSClist)):
             print(couterSClist[i]," ",end='')
     else:
-        print('还没写完')
+        print('no finishing......')
 
 
 
@@ -36,16 +35,16 @@ def countingKwords(path):
     countkeywrds = 0
     keywrdsList = list()
     with open(path) as fileStream:
-        #分割字符串
+        #split str
         strarr = fileStream.read().split()
-        #遍历str
+        #loop traverse str
         for str in strarr:
-            #遍历关键字表
+            #loop traverse keywords
             for kw in keywrds:
-                #如果有关键字countkeywrds + 1
+                #if contains keyword countkeywrds + 1
                 if (str.__contains__(kw)):
                     countkeywrds = countkeywrds + 1
-                    #添加item
+                    #add item
                     keywrdsList.append(kw)
                     break
     print('total num:', countkeywrds)
@@ -77,7 +76,7 @@ def countingswtichStructure(keywrdsList):
 
 # Counting if-else and if-elseif-else structure
 #def countingEifStructure(keywrdsList):
- #关键字表
+ #list of keywords
 keywrds = ["auto", "break", "case", "char", "const", "continue", "default"
         , "double", "do", "else", "enum", "extern", "float", "for", "goto", "if"
         , "int", "long", "register", "return", "short", "signed", "sizeof", "static"
