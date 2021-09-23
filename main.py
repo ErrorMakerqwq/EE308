@@ -31,8 +31,6 @@ def chooseingFuction(path,level):
 
 
 
-
-
 # Counting fuction
 def countingKwords(path):
     countkeywrds = 0
