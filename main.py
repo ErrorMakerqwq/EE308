@@ -85,8 +85,6 @@ keywrds = ["auto", "break", "case", "char", "const", "continue", "default"
 if __name__ == '__main__':
 
     path,level=ui()
-
-
     chooseingFuction(path, level)
 
 
