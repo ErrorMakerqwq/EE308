@@ -5,6 +5,12 @@
 @Date    ：2021/9/21 22:21 
 '''
 
+#ui
+def ui():
+    # 输入用户数据
+    path = input('请输入文件路径（默认路径为File.c)：')
+    level = input('请输入运行等级：')
+    return path,level
 #选择器
 def chooseingFuction(path,level):
     #level1
@@ -66,10 +72,8 @@ def countingswtichStructure(keywordsList):
 #def countingEifStructure(keywordsList):
 
 if __name__ == '__main__':
-    #输入用户数据
-    path=input('请输入文件路径（默认路径为File.c)：')
-    level=input('请输入运行等级：')
 
+    path,level=ui()
     #关键字表
     keywords = ["auto", "break", "case", "char", "const", "continue", "default"
         , "double", "do", "else", "enum", "extern", "float", "for", "goto", "if"
@@ -77,6 +81,7 @@ if __name__ == '__main__':
         , "struct", "switch", "typedef", "union", "unsigned", "void", "volatile", "while"]
 
     chooseingFuction(path, level)
+
 
 
 
